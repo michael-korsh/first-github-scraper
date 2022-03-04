@@ -2,8 +2,8 @@ name: Scrape
 
 on:
   schedule:
-    - cron: "0 8 * * *" # 9 a.m. every day, UTC
-    workflow_dispatch:
+    - cron: "0 8 * * *" # 9 a.m. every day UTC
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -11,11 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install pipenv
-    - run: pipx install pipenv
+      run: pipx install pipenv
     - uses: actions/setup-python@v2
-    with:
-      python-version: '3.9'
-      cache: 'pipenv'
+      with:
+        cache: 'pipenv'
     - run: pipenv install jupyter requests bs4 --python `which python`
     - name: Run scraper
       run: pipenv run jupyter execute scrape.ipynb
