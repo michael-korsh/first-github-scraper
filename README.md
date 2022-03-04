@@ -1,2 +1,2 @@
 # first-github-scraper
-First GitHub scraper, created during NICAR 2022.
+First GitHub scraper using Actions framework, created during NICAR 2022.
